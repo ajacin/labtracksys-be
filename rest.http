@@ -1,0 +1,8 @@
+POST localhost:4000/login
+content-type: application/json
+Accept: */*
+
+{
+  "username":"arun",
+  "password":"arunpass"
+}

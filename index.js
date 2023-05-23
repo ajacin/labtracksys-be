@@ -1,6 +1,7 @@
 const express = require("express");
 const { connection } = require("./db");
 const userRouter = require("./routes/user.routes");
+const labRouter = require("./routes/lab/lab.routes");
 const { SignupValidator } = require("./middlewares/SignupValidator");
 const { UserAuthentication } = require("./middlewares/UserAuthentication");
 const downloadFile = require("./routes/downloadfile.routes");
@@ -51,6 +52,9 @@ app.use("/login", loginRouter);
 app.use("/users", VerifyToken, userRouter);
 app.use("/download", downloadFile); // download a file
 app.use("/refresh-token", VerifyRefreshToken, refreshRouter);
+
+//lab
+app.use("/lab", VerifyToken, labRouter);
 
 app.listen(port, async () => {
   try {

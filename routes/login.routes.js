@@ -15,7 +15,7 @@ router.post("/", async (req, res) => {
     if (res.locals.user) {
       //setting expiry to 900s which is 15 seconds. Other values 1h, 1d,
       const option = {
-        expiresIn: "15s",
+        expiresIn: "15m",
       };
       const requestTokenOption = {
         expiresIn: "1y",
