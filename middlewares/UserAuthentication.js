@@ -3,6 +3,7 @@ const { UserModel } = require("../models/UserModel");
 const bcrypt = require("bcrypt");
 
 const UserAuthentication = async (req, res, next) => {
+  console.log("req path->", req.path);
   if (req.path == "/login") {
     const { username, password } = req.body;
     const user = await UserModel.findOne({ username });

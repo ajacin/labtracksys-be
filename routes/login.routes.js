@@ -15,7 +15,7 @@ router.post("/", async (req, res) => {
     if (res.locals.user) {
       //setting expiry to 900s which is 15 seconds. Other values 1h, 1d,
       const option = {
-        expiresIn: "15m",
+        expiresIn: "1d",
       };
       const requestTokenOption = {
         expiresIn: "1y",
@@ -27,7 +27,7 @@ router.post("/", async (req, res) => {
         requestTokenOption
       );
       res.send({
-        message: "Login success",
+        message: "authenticated",
         token: token,
         refreshToken: refreshToken,
         userDetails: {
