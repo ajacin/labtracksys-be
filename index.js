@@ -2,12 +2,12 @@ const express = require("express");
 const { connection } = require("./db");
 const userRouter = require("./routes/user.routes");
 const labRouter = require("./routes/lab/lab.routes");
-const { SignupValidator } = require("./middlewares/SignupValidator");
 const { UserAuthentication } = require("./middlewares/UserAuthentication");
 const downloadFile = require("./routes/downloadfile.routes");
 const loginRouter = require("./routes/login.routes");
 const refreshRouter = require("./routes/refresh.routes");
 const VerifyToken = require("./middlewares/VerifyToken");
+const { SetUser } = require("./middlewares/SetUser");
 const app = express();
 var cors = require("cors");
 const VerifyRefreshToken = require("./middlewares/VerifyRefreshToken");
@@ -45,7 +45,6 @@ app.use(
     origin: "*",
   })
 );
-app.use(SignupValidator);
 app.use(UserAuthentication);
 app.get("/", (req, res, next) => {
   try {
@@ -55,7 +54,7 @@ app.get("/", (req, res, next) => {
   }
 });
 app.use("/login", loginRouter);
-app.use("/users", VerifyToken, userRouter);
+app.use("/users", VerifyToken, SetUser, userRouter);
 app.use("/download", downloadFile); // download a file
 app.use("/refresh-token", VerifyRefreshToken, refreshRouter);
 

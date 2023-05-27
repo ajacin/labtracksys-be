@@ -22,6 +22,9 @@ router.post("/", async (req, res) => {
         process.env.REFRESH_TOKEN_KEY,
         requestTokenOption
       );
+      console.log(
+        "sending response: refresh.routes:Refresh token issue success"
+      );
       res.send({
         message: "Refresh token issue success",
         token: token,
@@ -34,6 +37,9 @@ router.post("/", async (req, res) => {
         },
       });
     } else {
+      console.log(
+        "sending response: refresh.routes:Failed to issue Refresh token"
+      );
       res.send({ message: "Failed to issue Refresh token" });
     }
   } catch (error) {

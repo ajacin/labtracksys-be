@@ -26,6 +26,7 @@ router.post("/", async (req, res) => {
         process.env.REFRESH_TOKEN_KEY,
         requestTokenOption
       );
+
       res.send({
         message: "authenticated",
         token: token,

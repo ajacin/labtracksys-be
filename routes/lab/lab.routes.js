@@ -18,12 +18,12 @@ router.get("/", async (req, res, next) => {
           email: datum.email,
         };
       });
+
       res.send({
         data: response,
       });
     }
   } catch (error) {
-    console.log("in error: get lab");
     res.send({
       message: error,
     });
@@ -40,6 +40,7 @@ router.post("/create", async (req, res) => {
     await data.save();
     //save and create does the same work. Save bypasses the schema validation but create confirms the schema
     //and trigger save internally for every docs. create acts like a middleware
+
     res.send({
       message: "Lab Created",
     });
