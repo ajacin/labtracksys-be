@@ -10,7 +10,6 @@ const SignupValidator = async (req, res, next) => {
   }
 
   encryptedPassword = await bcrypt.hash(password, SALTROUNDS);
-  req.body.role = "USER";
   req.body.password = encryptedPassword;
   let data = await UserModel.find({
     $or: [{ username: req.body.username }, { email: req.body.email }],

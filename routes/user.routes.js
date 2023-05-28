@@ -12,7 +12,7 @@ var ObjectId = require("mongodb").ObjectId;
 router.get(
   "/",
   SetUser,
-  CheckRoles([Roles.SUPERUSER]),
+  CheckRoles([Roles.SUPERUSER, Roles.ADMIN, Roles.USER]),
   async (req, res, next) => {
     try {
       console.log("in get users/");
