@@ -3,52 +3,49 @@ const { UserModel } = require("../models/UserModel");
 const router = express.Router();
 var jwt = require("jsonwebtoken");
 const { SignupValidator } = require("../middlewares/SignupValidator");
+const { CheckRoles } = require("../middlewares/access-control/CheckRoles");
+const { SetUser } = require("../middlewares/SetUser");
+const Roles = require("../constants/Roles");
 require("dotenv").config();
 var ObjectId = require("mongodb").ObjectId;
 
-router.get("/", async (req, res, next) => {
-  // "_id": "64230cf91f8f22d540a82fdb",
-  //     "username": "jittu",
-  //     "email": "jittu@yopmail.com",
-  //     "password": "$2b$10$onNxtCj.6l0WAYzjDlZ/AewCQKJlOfUFbNazV4f8UoK19AKTS/h.2",
-  //     "role": "USER",
-  //     "firstName": "Jittu",
-  //     "lastName": "Roy",
-  //     "__v": 0
-  try {
-    console.log("in get users/");
-    delete req.body.password;
-    // res.send("in data");
-    let data = await UserModel.find(req.body);
-    if (data.length > 0) {
-      console.log("INDATA", data);
-      let response = data.map((datum) => {
-        return {
-          id: datum._id,
-          username: datum.username,
-          email: datum.email,
-          role: datum.role,
-          firstName: datum.firstName,
-          lastName: datum.firstName,
-        };
-      });
-      console.log(response);
+router.get(
+  "/",
+  SetUser,
+  CheckRoles([Roles.SUPERUSER]),
+  async (req, res, next) => {
+    try {
+      console.log("in get users/");
+      delete req.body.password;
+      let data = await UserModel.find(req.body);
+      if (data.length > 0) {
+        let response = data.map((datum) => {
+          return {
+            id: datum._id,
+            username: datum.username,
+            email: datum.email,
+            role: datum.role,
+            firstName: datum.firstName,
+            lastName: datum.firstName,
+          };
+        });
+
+        res.send({
+          count: response?.length,
+          data: response ? response : [],
+        });
+        return;
+      }
+    } catch (error) {
+      console.log("in error", error);
 
       res.send({
-        count: response?.length,
-        data: response ? response : [],
+        message: error,
       });
-      return;
+      next(error);
     }
-  } catch (error) {
-    console.log("in error", error);
-
-    // res.send({
-    //   message: error,
-    // });
-    // next(error);
   }
-});
+);
 
 //Registration
 // async : db operations are async

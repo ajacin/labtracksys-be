@@ -19,7 +19,7 @@ const SetUser = async (req, res, next) => {
   console.log("got response here", user);
   if (user) {
     console.log("user exists from user:");
-    // res.locals.initiatedUser = user;
+    res.locals.initiatedUser = user;
     next();
   } else {
     res.send({
