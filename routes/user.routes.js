@@ -26,7 +26,7 @@ router.get(
             email: datum.email,
             role: datum.role,
             firstName: datum.firstName,
-            lastName: datum.firstName,
+            lastName: datum.lastName,
           };
         });
 
