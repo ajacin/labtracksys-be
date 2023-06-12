@@ -7,6 +7,7 @@ const downloadFile = require("./routes/downloadfile.routes");
 const loginRouter = require("./routes/login.routes");
 const refreshRouter = require("./routes/refresh.routes");
 const testRouter = require("./routes/tests.routes");
+const testGroupRouter = require("./routes/testgroup.routes");
 const VerifyToken = require("./middlewares/VerifyToken");
 const { SetUser } = require("./middlewares/SetUser");
 const app = express();
@@ -58,7 +59,10 @@ app.use("/login", loginRouter);
 app.use("/users", VerifyToken, SetUser, userRouter);
 app.use("/download", downloadFile); // download a file
 app.use("/refresh-token", VerifyRefreshToken, refreshRouter);
+
+//tests
 app.use("/tests", VerifyToken, testRouter);
+app.use("/testgroups", VerifyToken, testGroupRouter);
 
 //lab
 app.use("/lab", VerifyToken, labRouter);
