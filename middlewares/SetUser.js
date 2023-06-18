@@ -18,12 +18,12 @@ const SetUser = async (req, res, next) => {
   let user = await UserModel.findOne({ username: decoded.username });
   console.log("got response here", user);
   if (user) {
-    console.log("user exists from user:");
+    console.log("user exists from user:", user.username);
     delete user.password;
     res.locals.initiatedUser = user;
     next();
   } else {
-    res.send({
+    return res.send({
       message: "User who initiated the request does not exist",
     });
     return;

@@ -4,6 +4,7 @@ const router = express.Router();
 const { CheckRoles } = require("../middlewares/access-control/CheckRoles");
 const { SetUser } = require("../middlewares/SetUser");
 const Roles = require("../constants/Roles");
+const { ValidateTestIds } = require("../middlewares/ValidateTestIds");
 require("dotenv").config();
 var ObjectId = require("mongodb").ObjectId;
 
@@ -27,43 +28,48 @@ router.get(
         //   };
         // });
 
-        res.send({
+        return res.send({
           data: response ? response : [],
         });
-        return;
       } else {
-        res.send({
+        return res.send({
           message: "No test groups available",
         });
       }
     } catch (error) {
       console.log("error while fetching test groups", error);
 
-      res.send({
+      return res.send({
         message: error,
       });
-      next(error);
+      // next(error);
     }
   }
 );
 
-//Create a test
+//Create a testgroup
 router.post(
   "/create",
   SetUser,
+  ValidateTestIds,
   CheckRoles([Roles.SUPERUSER, Roles.ADMIN, Roles.USER]),
   async (req, res) => {
     try {
       let data = new TestGroupModel(req.body);
+
       await data.save();
       //save and create does the same work. Save bypasses the schema validation but create confirms the schema
       //and trigger save internally for every docs. create acts like a middleware
 
-      res.send({
+      return res.send({
         message: "Test Group Created",
       });
     } catch (error) {
       console.log(error);
+      return res.send({
+        message: "Failed to save Test Group",
+        error: error ?? "error",
+      });
     }
   }
 );
