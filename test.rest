@@ -4,7 +4,7 @@
 # @baseUrl = {{localUrl}}
 
 @accessToken = eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6ImFydW4iLCJwYXNzd29yZCI6ImFydW5wYXNzIiwiaWF0IjoxNjg1MjE2OTE0LCJleHAiOjE2ODUzMDMzMTR9.4uOTk-EBMAdbhldrZyepiIdQfRDRr1amOnNwAxuPbUg
-@superUserToken =eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6InN1cGVyIiwicGFzc3dvcmQiOiJwYXNzIiwiaWF0IjoxNjg2NTQ2NzY3LCJleHAiOjE2ODY2MzMxNjd9.T2dyjE1UAqR4Lo9YBtc1Auwqpc1Xxzy5mjJlyLs4WfY
+@superUserToken =eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6InN1cGVyIiwicGFzc3dvcmQiOiJwYXNzIiwiaWF0IjoxNjg3MTEwOTYxLCJleHAiOjE2ODcxOTczNjF9.o8BCRZmlJLv5zhYDeTSCAzSd-HhCWukp4dVryfraTsw
 ###
 
 #### LOGIN AND SIGNUP
@@ -83,7 +83,7 @@ Content-Type: application/json
 x-access-token: {{superUserToken}}
 
 {
-  "name": "Group 3",
-  "description": "Group 1 Desc",
-  "testIds": ["64856ac003220df4abc0f99b","648569af03220df4abc0f994"]
+  "name": "Lipid Profile 2",
+  "description": "Lipid profile group 2",
+  "testIds": ["6478ab27f48020c613ab3acc","6477b41332ade7e70fdcc849","6477c4bd20aad115f7c6f443"]
 }
