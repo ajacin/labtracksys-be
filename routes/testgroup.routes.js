@@ -74,13 +74,13 @@ router.post(
   }
 );
 
-// Delete a user
-// router.delete("/:id", async (req, res) => {
-//   const query = { _id: new ObjectId(req.params.id) };
+// Delete a test group
+router.delete("/:id", async (req, res) => {
+  const query = { _id: new ObjectId(req.params.id) };
 
-//   let result = await TestModel.deleteOne(query);
+  let result = await TestGroupModel.deleteOne(query);
 
-//   res.send(result).status(200);
-// });
+  res.send(result).status(200);
+});
 
 module.exports = router;

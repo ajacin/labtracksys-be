@@ -10,9 +10,11 @@ const ValidateTestIds = async (req, res, next) => {
     console.log("TEST IDS IN DB");
     console.log(testIdsInDB);
     let valid = true;
+    let testIdElementForError = "";
     await testIds.forEach((element) => {
       if (!testIdsInDB.includes(element)) {
         valid = false;
+        testIdElementForError = element;
       }
     });
     console.log(valid ? "VALID TEST IDS" : "INVALID TEST IDS");
@@ -20,8 +22,8 @@ const ValidateTestIds = async (req, res, next) => {
       console.log("test ids present");
       next();
     } else {
-      return res.send({
-        message: "Test listed is not present in List of tests",
+      return res.status(400).send({
+        message: `Test listed (${testIdElementForError}) is not present in List of tests`,
       });
     }
   }

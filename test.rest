@@ -4,7 +4,7 @@
 # @baseUrl = {{localUrl}}
 
 @accessToken = eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6ImFydW4iLCJwYXNzd29yZCI6ImFydW5wYXNzIiwiaWF0IjoxNjg1MjE2OTE0LCJleHAiOjE2ODUzMDMzMTR9.4uOTk-EBMAdbhldrZyepiIdQfRDRr1amOnNwAxuPbUg
-@superUserToken =eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6InN1cGVyIiwicGFzc3dvcmQiOiJwYXNzIiwiaWF0IjoxNjk1NzA1NTM3LCJleHAiOjE2OTU3OTE5Mzd9.hOKHs5fZ1FJknZxP30HUYA-qPDjdZ3U6QlJB8bGRQY8
+@superUserToken =eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6InN1cGVyIiwicGFzc3dvcmQiOiJwYXNzIiwiaWF0IjoxNjk4NjQ2ODk1LCJleHAiOjE2OTg3MzMyOTV9.s8Pic97WQBDxpl9isoSKGMcvxnG9oOdIpf2k0j4KF04
 ###
 
 #### LOGIN AND SIGNUP
@@ -94,3 +94,24 @@ x-access-token: {{superUserToken}}
 DELETE {{baseUrl}}/testgroups/651236125130e2d9a6153c09
 Content-Type: application/json
 x-access-token: {{superUserToken}}
+
+
+### ACTIVITIES
+
+### Get Activities
+
+GET {{baseUrl}}/activities
+Content-Type: application/json
+x-access-token: {{superUserToken}}
+
+## Create
+
+POST {{baseUrl}}/activities/create
+Content-Type: application/json
+x-access-token: {{superUserToken}}
+
+{
+  "activityName": "Lipid Profile 3",
+  "activityDescription": "Lipid profile group 3",
+  "active": true
+}

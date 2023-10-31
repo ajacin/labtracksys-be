@@ -13,6 +13,7 @@ const { SetUser } = require("./middlewares/SetUser");
 const app = express();
 var cors = require("cors");
 const VerifyRefreshToken = require("./middlewares/VerifyRefreshToken");
+const activitiesRouter = require("./routes/activitylog/activitylog.routes");
 
 require("dotenv").config();
 const port = process.env.PORT;
@@ -66,6 +67,9 @@ app.use("/testgroups", VerifyToken, testGroupRouter);
 
 //lab
 app.use("/lab", VerifyToken, labRouter);
+
+//Activities log
+app.use("/activities", activitiesRouter);
 
 app.listen(port, async () => {
   try {
