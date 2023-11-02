@@ -104,14 +104,21 @@ GET {{baseUrl}}/activities
 Content-Type: application/json
 x-access-token: {{superUserToken}}
 
-## Create
+### Create Activiteis
+
 
 POST {{baseUrl}}/activities/create
 Content-Type: application/json
 x-access-token: {{superUserToken}}
 
 {
-  "activityName": "Lipid Profile 3",
-  "activityDescription": "Lipid profile group 3",
+  "activityName": "Nasal Spray",
+  "activityDescription": "Nasal Spray",
   "active": true
 }
+
+### DELETE Activity
+
+DELETE {{baseUrl}}/activities/654317165e9f2c0be2418680
+Content-Type: application/json
+x-access-token: {{superUserToken}}

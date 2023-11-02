@@ -11,6 +11,7 @@ router.get("/", async (req, res, next) => {
         return {
           id: datum._id,
           name: datum.activityName,
+          description: datum.activityDescription,
         };
       });
 
@@ -43,13 +44,13 @@ router.post("/create", async (req, res) => {
   }
 });
 
-// // Delete a user
-// router.delete("/:id", async (req, res) => {
-//   const query = { _id: new ObjectId(req.params.id) };
+// Delete an activity
+router.delete("/:id", async (req, res) => {
+  const query = { _id: new ObjectId(req.params.id) };
 
-//   let result = await LabModel.deleteOne(query);
+  let result = await ActivitiesModel.deleteOne(query);
 
-//   res.send(result).status(200);
-// });
+  res.send(result).status(200);
+});
 
 module.exports = router;
