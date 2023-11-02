@@ -13,7 +13,7 @@ const { SetUser } = require("./middlewares/SetUser");
 const app = express();
 var cors = require("cors");
 const VerifyRefreshToken = require("./middlewares/VerifyRefreshToken");
-const activitiesRouter = require("./routes/activitylog/activitylog.routes");
+const activitiesRouter = require("./routes/activitylog/activities.routes");
 
 require("dotenv").config();
 const port = process.env.PORT;

@@ -2,7 +2,7 @@ const express = require("express");
 const router = express.Router();
 require("dotenv").config();
 var ObjectId = require("mongodb").ObjectId;
-const { ActivitiesModel } = require("../../models/ActivitiesModel.tsx");
+const { ActivitiesModel } = require("../../models/ActivitiesModel.ts");
 router.get("/", async (req, res, next) => {
   try {
     let data = await ActivitiesModel.find({});

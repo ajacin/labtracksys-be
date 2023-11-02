@@ -112,8 +112,8 @@ Content-Type: application/json
 x-access-token: {{superUserToken}}
 
 {
-  "activityName": "Nasal Spray",
-  "activityDescription": "Nasal Spray",
+  "activityName": "TestActivityName",
+  "activityDescription": "TestActivityDescription",
   "active": true
 }
 
