@@ -1,10 +1,9 @@
 @remoteUrl = https://lab-track-system.onrender.com
-@localUrl=http://localhost:4000
+@localUrl = http://localhost:4000
 @baseUrl = {{localUrl}}
-# @baseUrl = {{localUrl}}
+@accessToken = <your_access_token_here>
+@superUserToken = <your_super_user_token_here>
 
-@accessToken = eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6ImFydW4iLCJwYXNzd29yZCI6ImFydW5wYXNzIiwiaWF0IjoxNjg1MjE2OTE0LCJleHAiOjE2ODUzMDMzMTR9.4uOTk-EBMAdbhldrZyepiIdQfRDRr1amOnNwAxuPbUg
-@superUserToken =eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6InN1cGVyIiwicGFzc3dvcmQiOiJwYXNzIiwiaWF0IjoxNjk4NjQ2ODk1LCJleHAiOjE2OTg3MzMyOTV9.s8Pic97WQBDxpl9isoSKGMcvxnG9oOdIpf2k0j4KF04
 ###
 
 #### LOGIN AND SIGNUP
@@ -13,8 +12,8 @@ POST  {{baseUrl}}/login
 Content-Type: application/json
 
 {
-  "username":"super",
-  "password":"pass"
+  "username": "super",
+  "password": "pass"
 }
 
 #### USERS
@@ -26,7 +25,7 @@ Content-Type: application/json
 x-access-token: {{superUserToken}}
 
 {
-  "role":"USER"
+  "role": "USER"
 }
 
 ### TESTS
@@ -40,7 +39,6 @@ x-access-token: {{superUserToken}}
 
 ### Create a Test
 
-
 POST {{baseUrl}}/tests/create
 Content-Type: application/json
 x-access-token: {{superUserToken}}
@@ -49,21 +47,21 @@ x-access-token: {{superUserToken}}
   "name": "RBC Count 4",
   "description": "Red Blood Cells Count 4",
   "resultType": "VALUE",
-  "unit":"10^12/L",
+  "unit": "10^12/L",
   "minRange": null,
   "maxRange": null,
   "pregnancyMinRange": null,
   "pregnancyMaxRange": null,
-  "femaleMinRange":4.5,
-  "femaleMaxRange":5,
-  "maleMinRange":4.7,
-  "maleMaxRange":6.2,
-  "childMinRange":3.5,
-  "childMaxRange":5.5,
-  "newBornMinRange":4.8,
-  "newBornMaxRange":7.1,
-  "newBornMaxAgeMonths":4,
-  "childMaxAge":12,
+  "femaleMinRange": 4.5,
+  "femaleMaxRange": 5,
+  "maleMinRange": 4.7,
+  "maleMaxRange": 6.2,
+  "childMinRange": 3.5,
+  "childMaxRange": 5.5,
+  "newBornMinRange": 4.8,
+  "newBornMaxRange": 7.1,
+  "newBornMaxAgeMonths": 4,
+  "childMaxAge": 12,
   "resultStrings": null,
   "createdBy": "super"
 }
@@ -85,16 +83,14 @@ x-access-token: {{superUserToken}}
 {
   "name": "Lipid Profile 3",
   "description": "Lipid profile group 3",
-  "testIds": ["6478ab27f48020c613ab3acc","6477b41332ade7e70fdcc849","6477c4bd20aad115f7c6f443"]
+  "testIds": ["6478ab27f48020c613ab3acc", "6477b41332ade7e70fdcc849", "6477c4bd20aad115f7c6f443"]
 }
-
 
 ### DELETE test groups
 
 DELETE {{baseUrl}}/testgroups/651236125130e2d9a6153c09
 Content-Type: application/json
 x-access-token: {{superUserToken}}
-
 
 ### ACTIVITIES
 
@@ -104,8 +100,7 @@ GET {{baseUrl}}/activities
 Content-Type: application/json
 x-access-token: {{superUserToken}}
 
-### Create Activiteis
-
+### Create Activities
 
 POST {{baseUrl}}/activities/create
 Content-Type: application/json
@@ -120,5 +115,43 @@ x-access-token: {{superUserToken}}
 ### DELETE Activity
 
 DELETE {{baseUrl}}/activities/654317165e9f2c0be2418680
+Content-Type: application/json
+x-access-token: {{superUserToken}}
+
+### DASHBOARD
+
+### Get Dashboard Entries
+
+GET {{baseUrl}}/dashboard
+Content-Type: application/json
+x-access-token: {{superUserToken}}
+
+### Create Dashboard Entry
+
+POST {{baseUrl}}/dashboard/create
+Content-Type: application/json
+x-access-token: {{superUserToken}}
+
+{
+  "test": "test",
+  "diapers": { "count": 50, "cost": 25.0 },
+  "formula": { "count": 20, "cost": 35.0 }
+}
+
+### Update Dashboard Entry
+
+PUT {{baseUrl}}/dashboard/65448ea9a7884b760b7f6a0e
+Content-Type: application/json
+x-access-token: {{superUserToken}}
+
+{
+  "test": "test",
+  "diapers": { "count": 36, "cost": 76 },
+  "formula": { "count": 26, "cost": 66 }
+}
+
+### DELETE Dashboard Entry
+
+DELETE {{baseUrl}}/dashboard/65445394dd392ccc3e371be9
 Content-Type: application/json
 x-access-token: {{superUserToken}}

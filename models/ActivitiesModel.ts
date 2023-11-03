@@ -6,6 +6,6 @@ const activitiesSchema = mongoose.Schema({
   active: { type: Boolean, required: false, default: true },
 });
 
-const ActivitiesModel = mongoose.model("activites", activitiesSchema);
+const ActivitiesModel = mongoose.model("activities", activitiesSchema);
 
 module.exports = { ActivitiesModel };

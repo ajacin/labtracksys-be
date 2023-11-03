@@ -50,20 +50,26 @@ router.get(
 //Registration
 // async : db operations are async
 
-router.post("/create", SignupValidator, async (req, res) => {
-  try {
-    let data = new UserModel(req.body);
-    await data.save();
-    //save and create does the same work. Save bypasses the schema validation but create confirms the schema
-    //and trigger save internally for every docs. create acts like a middleware
+router.post(
+  "/create",
+  SetUser,
+  CheckRoles([Roles.SUPERUSER]),
+  SignupValidator,
+  async (req, res) => {
+    try {
+      let data = new UserModel(req.body);
+      await data.save();
+      //save and create does the same work. Save bypasses the schema validation but create confirms the schema
+      //and trigger save internally for every docs. create acts like a middleware
 
-    res.send({
-      message: "User registered",
-    });
-  } catch (error) {
-    console.log(error);
+      res.send({
+        message: "User registered",
+      });
+    } catch (error) {
+      console.log(error);
+    }
   }
-});
+);
 
 // Delete a user
 router.delete("/:id", async (req, res) => {
