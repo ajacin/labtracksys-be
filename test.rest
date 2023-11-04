@@ -146,8 +146,8 @@ x-access-token: {{superUserToken}}
 
 {
   "test": "test",
-  "diapers": { "count": 36, "cost": 76 },
-  "formula": { "count": 26, "cost": 66 }
+  "diapers": { "count": 36, "cost": 77 },
+  "formula": { "count": 26, "cost": 60.66 }
 }
 
 ### DELETE Dashboard Entry
