@@ -1,8 +1,8 @@
 @remoteUrl = https://lab-track-system.onrender.com
 @localUrl = http://localhost:4000
 @baseUrl = {{localUrl}}
-@accessToken = <your_access_token_here>
-@superUserToken = <your_super_user_token_here>
+@accessToken = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6InN1cGVyIiwicGFzc3dvcmQiOiJwYXNzIiwiaWF0IjoxNjk5MzQyMDkzLCJleHAiOjE2OTk0Mjg0OTN9.Anh2tKHoASDmqogrMUtfCHHdwoiXaUM6z3aoFj8_d7E"
+@superUserToken = eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6InN1cGVyIiwicGFzc3dvcmQiOiJwYXNzIiwiaWF0IjoxNjk5MzQyMzY2LCJleHAiOjE2OTk0Mjg3NjZ9.i1jcs_luSuphksPAMzty-hkRu_jAu9bKga65HbdLoC4
 
 ###
 
@@ -19,6 +19,16 @@ Content-Type: application/json
 #### USERS
 
 ### GET all users
+
+GET {{baseUrl}}/users
+Content-Type: application/json
+x-access-token: {{superUserToken}}
+
+{
+}
+
+
+### GET all users with role 'USER'
 
 GET {{baseUrl}}/users
 Content-Type: application/json
@@ -155,3 +165,34 @@ x-access-token: {{superUserToken}}
 DELETE {{baseUrl}}/dashboard/65445394dd392ccc3e371be9
 Content-Type: application/json
 x-access-token: {{superUserToken}}
+
+
+### ACTIVITY LOGS
+
+### Get Activity Logs
+
+GET {{baseUrl}}/activitylogs
+Content-Type: application/json
+x-access-token: {{superUserToken}}
+
+### Create Activity Logs
+
+POST {{baseUrl}}/activitylogs/create
+Content-Type: application/json
+x-access-token: {{superUserToken}}
+
+{
+  "activityId": "65448f1f4277e46e002e7d20",
+  "title": "Sample Activity Log",
+  "description": "This is a sample activity log entry",
+  "time": "2023-11-04T12:00:00.000Z",
+  "userId": "6474c62d74b877c5930e59a1"
+}
+
+
+### DELETE Activity Logs
+
+DELETE {{baseUrl}}/activitylogs/654317165e9f2c0be2418680
+Content-Type: application/json
+x-access-token: {{superUserToken}}
+

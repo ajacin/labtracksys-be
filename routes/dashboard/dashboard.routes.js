@@ -15,9 +15,9 @@ router.get("/", async (req, res, next) => {
           formula: datum.formula,
         };
       });
-
+      //send only first and the only value
       res.send({
-        data: response,
+        data: response[0],
       });
     }
   } catch (error) {

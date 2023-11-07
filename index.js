@@ -14,6 +14,7 @@ const app = express();
 var cors = require("cors");
 const VerifyRefreshToken = require("./middlewares/VerifyRefreshToken");
 const activitiesRouter = require("./routes/activitylog/activities.routes");
+const activityLogsRouter = require("./routes/activitylog/activityLogs.routes.ts");
 const dashboardRouter = require("./routes/dashboard/dashboard.routes");
 
 require("dotenv").config();
@@ -71,6 +72,7 @@ app.use("/lab", VerifyToken, labRouter);
 
 //Activities log
 app.use("/activities", activitiesRouter);
+app.use("/activitylogs", activityLogsRouter);
 
 // Dashboard
 
