@@ -183,8 +183,8 @@ x-access-token: {{superUserToken}}
 
 {
   "activityId": "65448f1f4277e46e002e7d20",
-  "title": "Sample Activity Log4",
-  "description": "This is a sample activity log 4",
+  "title": "Formula Milk",
+  "description": "60 ml",
   "userId": "6474c62d74b877c5930e59a1"
 }
 

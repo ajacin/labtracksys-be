@@ -8,11 +8,9 @@ router.get("/", async (req, res, next) => {
     let data = await ActivitiesModel.find({});
     if (data.length > 0) {
       let response = data.map((datum) => {
-        return {
-          id: datum._id,
-          name: datum.activityName,
-          description: datum.activityDescription,
-        };
+        const { id, activityName, activityDescription, active } = datum;
+
+        return { id, activityName, activityDescription, active };
       });
 
       res.send({
