@@ -2,7 +2,7 @@
 @localUrl = http://localhost:4000
 @baseUrl = {{localUrl}}
 @accessToken = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6InN1cGVyIiwicGFzc3dvcmQiOiJwYXNzIiwiaWF0IjoxNjk5MzQyMDkzLCJleHAiOjE2OTk0Mjg0OTN9.Anh2tKHoASDmqogrMUtfCHHdwoiXaUM6z3aoFj8_d7E"
-@superUserToken = eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6InN1cGVyIiwicGFzc3dvcmQiOiJwYXNzIiwiaWF0IjoxNjk5MzQyMzY2LCJleHAiOjE2OTk0Mjg3NjZ9.i1jcs_luSuphksPAMzty-hkRu_jAu9bKga65HbdLoC4
+@superUserToken = eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6InN1cGVyIiwicGFzc3dvcmQiOiJwYXNzIiwiaWF0IjoxNjk5NDkwOTk3LCJleHAiOjE2OTk1NzczOTd9.z5qHWH1FVVo4Uhtn0DxUCcMPkyLK-cFLIgAfQ_kVmP8
 
 ###
 
@@ -183,9 +183,8 @@ x-access-token: {{superUserToken}}
 
 {
   "activityId": "65448f1f4277e46e002e7d20",
-  "title": "Sample Activity Log",
-  "description": "This is a sample activity log entry",
-  "time": "2023-11-04T12:00:00.000Z",
+  "title": "Sample Activity Log4",
+  "description": "This is a sample activity log 4",
   "userId": "6474c62d74b877c5930e59a1"
 }
 

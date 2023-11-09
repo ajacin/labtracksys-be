@@ -71,12 +71,12 @@ app.use("/testgroups", VerifyToken, testGroupRouter);
 app.use("/lab", VerifyToken, labRouter);
 
 //Activities log
-app.use("/activities", activitiesRouter);
-app.use("/activitylogs", activityLogsRouter);
+app.use("/activities", VerifyToken, activitiesRouter);
+app.use("/activitylogs", VerifyToken, activityLogsRouter);
 
 // Dashboard
 
-app.use("/dashboard", dashboardRouter);
+app.use("/dashboard", VerifyToken, dashboardRouter);
 
 app.listen(port, async () => {
   try {

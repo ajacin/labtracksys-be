@@ -8,9 +8,13 @@ router.get("/", async (req, res, next) => {
     let data = await ActivityLogsModel.find({});
     if (data.length > 0) {
       let response = data.map((datum) => {
+        const { id, title, description, time, userId } = datum;
         return {
-          id: datum._id,
-          title: datum.title,
+          id,
+          title,
+          description,
+          time,
+          userId,
         };
       });
 
@@ -31,6 +35,8 @@ router.get("/", async (req, res, next) => {
 router.post("/create", async (req, res) => {
   try {
     let data = new ActivityLogsModel(req.body);
+    if (!req.body.time) req.body.time = new Date().toLocaleString();
+
     await data.save();
     //  save and create does the same work. Save bypasses the schema validation but create confirms the schema
     //  and trigger save internally for every docs. create acts like a middleware
